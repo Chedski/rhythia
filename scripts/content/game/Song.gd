@@ -216,7 +216,7 @@ func load_pbs():
 		
 		var amt:int = file.get_64() # number of bests stored
 		
-		for i in range(amt):
+		for _i in range(amt):
 			var pb:Dictionary = {}
 			var s:String = file.get_line()
 			# if sv == 1: s = s.replace("1.27","1.14") # handle the default hitbox change
