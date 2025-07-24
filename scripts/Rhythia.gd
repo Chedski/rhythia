@@ -141,7 +141,8 @@ var first_init_done = false # Don't reload mods as that can cause problems
 var loaded_world = null # Holds the bg world for transit between songload and song player
 var was_map_screen_centered:bool = true
 var menu_target:String = ProjectSettings.get_setting("application/config/default_menu_target")
-var is_init:bool = true # Used to check if Onboarding is being used for game startup
+var is_init:bool = true # Should we start the initialization process?
+var init_running:bool = false # Is the initialization process currently running?
 
 # Song list position/search persistence
 var was_auto_play_switch:bool = true
@@ -822,7 +823,7 @@ func generate_pb_str(for_pb:bool=false):
 		Globals.HP_OLD: pts.append("hp_old")
 		Globals.HP_SOUNDSPACE: pass # prevents wiping of old pbs
 	pts.append("hitw:%s" % String(floor(hitwindow_ms)))
-	var hb = note_hitbox_size
+#	var hb = note_hitbox_size
 	pts.append("hbox:%.02f" % note_hitbox_size)
 	pts.append("ar:%d" % sign(approach_rate))
 	if !for_pb and start_offset != 0: pts.append("so:%f" % start_offset)
@@ -2016,6 +2017,8 @@ var single_map_mode_audio_path:String
 
 # Initialization
 func do_init(_ud=null):
+	init_running = true
+	is_init = false
 	installed_packs = []
 	yield(get_tree().create_timer(0.05),"timeout") # haha thread safety go brrrr
 	var lp:bool = false # load pause
@@ -2261,9 +2264,9 @@ func do_init(_ud=null):
 		var smaps:Array = []
 		emit_signal("init_stage_reached","Register content 1/4\nImport Rhythia maps\nLocating files")
 		yield(get_tree(),"idle_frame")
-		var sd:Array = []
+#		var sd:Array = []
 		dir.change_dir(user_map_dir)
-		var li = 0
+#		var li = 0
 		
 		var map_search_folders = [user_map_dir]
 		err = file.open(Globals.p("user://map_folders.txt"),File.READ)
@@ -2520,5 +2523,6 @@ func do_init(_ud=null):
 		Globals.confirm_prompt.s_next.play()
 		Globals.confirm_prompt.close()
 		yield(Globals.confirm_prompt,"done_closing")
-	is_init = false
+	init_running = false
+	print("Init done!")
 	emit_signal("init_stage_reached","Waiting for menu",true)
