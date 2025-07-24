@@ -669,6 +669,7 @@ var visual_approach_follow:bool = false
 var billboard_score:bool = false
 var score_popup:bool = false
 var mirror_buttons:bool = false
+var show_full_combo_indicators:bool = true
 
 # Settings - HUD Colors
 var panel_bg:Color = Color("#9b000000") #9bcecece
