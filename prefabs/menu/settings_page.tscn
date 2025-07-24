@@ -2816,21 +2816,21 @@ custom_styles/separator = SubResource( 55 )
 [node name="UI" type="VBoxContainer" parent="TabContainer/UI"]
 margin_top = 30.0
 margin_right = 1280.0
-margin_bottom = 562.0
+margin_bottom = 594.0
 
 [node name="Group" type="MarginContainer" parent="TabContainer/UI/UI"]
 margin_right = 1280.0
-margin_bottom = 532.0
+margin_bottom = 564.0
 mouse_filter = 1
 custom_constants/margin_left = 66
 
 [node name="H" type="GridContainer" parent="TabContainer/UI/UI/Group"]
 margin_left = 66.0
 margin_right = 1280.0
-margin_bottom = 532.0
+margin_bottom = 564.0
 
 [node name="Grid" type="CheckBox" parent="TabContainer/UI/UI/Group/H"]
-margin_right = 170.0
+margin_right = 214.0
 margin_bottom = 28.0
 rect_min_size = Vector2( 0, 28 )
 hint_tooltip = "turns the note grid on or off"
@@ -2854,7 +2854,7 @@ target = "enable_grid"
 
 [node name="Border" type="CheckBox" parent="TabContainer/UI/UI/Group/H"]
 margin_top = 32.0
-margin_right = 170.0
+margin_right = 214.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 0, 28 )
 hint_tooltip = "turns the note grid border on or off"
@@ -2878,7 +2878,7 @@ target = "enable_border"
 
 [node name="SimpleHud" type="CheckBox" parent="TabContainer/UI/UI/Group/H"]
 margin_top = 64.0
-margin_right = 170.0
+margin_right = 214.0
 margin_bottom = 92.0
 rect_min_size = Vector2( 0, 28 )
 hint_tooltip = "changes the side panels to show only your misses and pauses"
@@ -2902,7 +2902,7 @@ target = "simple_hud"
 
 [node name="LetterGrade" type="CheckBox" parent="TabContainer/UI/UI/Group/H"]
 margin_top = 96.0
-margin_right = 170.0
+margin_right = 214.0
 margin_bottom = 124.0
 rect_min_size = Vector2( 0, 28 )
 hint_tooltip = "shows a letter grade (SS, S, A, etc.) above your accuracy"
@@ -2926,7 +2926,7 @@ target = "show_letter_grade"
 
 [node name="Config" type="CheckBox" parent="TabContainer/UI/UI/Group/H"]
 margin_top = 128.0
-margin_right = 170.0
+margin_right = 214.0
 margin_bottom = 156.0
 rect_min_size = Vector2( 0, 28 )
 hint_tooltip = "shows your approach rate, hit window, and camera config at the start of songs (to show off)"
@@ -2950,7 +2950,7 @@ target = "show_config"
 
 [node name="DisplayTrueCombo" type="CheckBox" parent="TabContainer/UI/UI/Group/H"]
 margin_top = 160.0
-margin_right = 170.0
+margin_right = 214.0
 margin_bottom = 188.0
 rect_min_size = Vector2( 0, 28 )
 hint_tooltip = "displays the real value of your combo behind the grid"
@@ -2969,10 +2969,31 @@ flat = true
 script = ExtResource( 54 )
 target = "display_true_combo"
 
-[node name="ShowHealth" type="CheckBox" parent="TabContainer/UI/UI/Group/H"]
+[node name="FullComboIndicators" type="CheckBox" parent="TabContainer/UI/UI/Group/H"]
 margin_top = 192.0
-margin_right = 170.0
+margin_right = 214.0
 margin_bottom = 220.0
+rect_min_size = Vector2( 0, 28 )
+hint_tooltip = "highlights the letter grade and combo number (if visible) when you have 100% accuracy"
+theme = ExtResource( 1 )
+custom_colors/font_color_disabled = Color( 0.898039, 0.94902, 1, 1 )
+custom_colors/font_color_focus = Color( 0.898039, 0.94902, 1, 1 )
+custom_colors/font_color_hover_pressed = Color( 0.898039, 0.94902, 1, 1 )
+custom_colors/font_color = Color( 0.898039, 0.94902, 1, 1 )
+custom_colors/font_color_hover = Color( 0.898039, 0.94902, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.898039, 0.94902, 1, 1 )
+custom_fonts/font = SubResource( 4 )
+pressed = true
+action_mode = 0
+text = "Show Full Combo Indicators"
+flat = true
+script = ExtResource( 54 )
+target = "show_full_combo_indicators"
+
+[node name="ShowHealth" type="CheckBox" parent="TabContainer/UI/UI/Group/H"]
+margin_top = 224.0
+margin_right = 214.0
+margin_bottom = 252.0
 rect_min_size = Vector2( 0, 28 )
 hint_tooltip = "i don't understand why you'd turn this off but people have asked so here you go"
 theme = ExtResource( 1 )
@@ -2991,9 +3012,9 @@ script = ExtResource( 54 )
 target = "show_hp_bar"
 
 [node name="ShowTimer" type="CheckBox" parent="TabContainer/UI/UI/Group/H"]
-margin_top = 224.0
-margin_right = 170.0
-margin_bottom = 252.0
+margin_top = 256.0
+margin_right = 214.0
+margin_bottom = 284.0
 rect_min_size = Vector2( 0, 28 )
 hint_tooltip = "tells you how far into a song you are (and the name of the song)"
 theme = ExtResource( 1 )
@@ -3012,9 +3033,9 @@ script = ExtResource( 54 )
 target = "show_timer"
 
 [node name="AccuracyBar" type="CheckBox" parent="TabContainer/UI/UI/Group/H"]
-margin_top = 256.0
-margin_right = 170.0
-margin_bottom = 284.0
+margin_top = 288.0
+margin_right = 214.0
+margin_bottom = 316.0
 rect_min_size = Vector2( 0, 28 )
 hint_tooltip = "shows your accuracy on a progress bar"
 theme = ExtResource( 1 )
@@ -3033,9 +3054,9 @@ script = ExtResource( 54 )
 target = "show_accuracy_bar"
 
 [node name="ShowLeftPanel" type="CheckBox" parent="TabContainer/UI/UI/Group/H"]
-margin_top = 288.0
-margin_right = 170.0
-margin_bottom = 316.0
+margin_top = 320.0
+margin_right = 214.0
+margin_bottom = 348.0
 rect_min_size = Vector2( 0, 28 )
 hint_tooltip = "contains: combo meter, pause counter, accuracy"
 theme = ExtResource( 1 )
@@ -3054,9 +3075,9 @@ script = ExtResource( 54 )
 target = "show_left_panel"
 
 [node name="ShowRightPanel" type="CheckBox" parent="TabContainer/UI/UI/Group/H"]
-margin_top = 320.0
-margin_right = 170.0
-margin_bottom = 348.0
+margin_top = 352.0
+margin_right = 214.0
+margin_bottom = 380.0
 rect_min_size = Vector2( 0, 28 )
 hint_tooltip = "contains: framerate, miss counter, notes hit / total notes"
 theme = ExtResource( 1 )
@@ -3075,9 +3096,9 @@ script = ExtResource( 54 )
 target = "show_right_panel"
 
 [node name="ShowCursor" type="CheckBox" parent="TabContainer/UI/UI/Group/H"]
-margin_top = 352.0
-margin_right = 170.0
-margin_bottom = 380.0
+margin_top = 384.0
+margin_right = 214.0
+margin_bottom = 412.0
 rect_min_size = Vector2( 0, 28 )
 hint_tooltip = "to prevent issues where people forget they turned the cursor off, this doesn't save"
 theme = ExtResource( 1 )
@@ -3096,9 +3117,9 @@ script = ExtResource( 54 )
 target = "show_cursor"
 
 [node name="AttachHpToGrid" type="CheckBox" parent="TabContainer/UI/UI/Group/H"]
-margin_top = 384.0
-margin_right = 170.0
-margin_bottom = 412.0
+margin_top = 416.0
+margin_right = 214.0
+margin_bottom = 444.0
 rect_min_size = Vector2( 0, 28 )
 hint_tooltip = "attaches your health bar + modifiers to the note grid"
 theme = ExtResource( 1 )
@@ -3116,9 +3137,9 @@ script = ExtResource( 54 )
 target = "attach_hp_to_grid"
 
 [node name="AttachTimerToGrid" type="CheckBox" parent="TabContainer/UI/UI/Group/H"]
-margin_top = 416.0
-margin_right = 170.0
-margin_bottom = 444.0
+margin_top = 448.0
+margin_right = 214.0
+margin_bottom = 476.0
 rect_min_size = Vector2( 0, 28 )
 hint_tooltip = "attaches the timer + song name to the note grid"
 theme = ExtResource( 1 )
@@ -3136,9 +3157,9 @@ script = ExtResource( 54 )
 target = "attach_timer_to_grid"
 
 [node name="Score Popup" type="CheckBox" parent="TabContainer/UI/UI/Group/H"]
-margin_top = 448.0
-margin_right = 170.0
-margin_bottom = 476.0
+margin_top = 480.0
+margin_right = 214.0
+margin_bottom = 508.0
 rect_min_size = Vector2( 0, 28 )
 hint_tooltip = "show the score you get from hitting a note at the bottom of the grid"
 theme = ExtResource( 1 )
@@ -3157,9 +3178,9 @@ script = ExtResource( 54 )
 target = "score_popup"
 
 [node name="BillboardScore2" type="CheckBox" parent="TabContainer/UI/UI/Group/H"]
-margin_top = 480.0
-margin_right = 170.0
-margin_bottom = 508.0
+margin_top = 512.0
+margin_right = 214.0
+margin_bottom = 540.0
 rect_min_size = Vector2( 0, 28 )
 hint_tooltip = "apply a billboard effect to the score popup"
 theme = ExtResource( 1 )
@@ -3210,9 +3231,9 @@ valign = 1
 clip_text = true
 
 [node name="ExpandHUDonHR" type="CheckBox" parent="TabContainer/UI/UI/Group/H"]
-margin_top = 512.0
-margin_right = 170.0
-margin_bottom = 532.0
+margin_top = 544.0
+margin_right = 214.0
+margin_bottom = 564.0
 hint_tooltip = "expands the HUD when using Hard Rock"
 theme = ExtResource( 1 )
 custom_colors/font_color_disabled = Color( 0.898039, 0.94902, 1, 1 )
@@ -3230,9 +3251,9 @@ script = ExtResource( 54 )
 target = "expand_hud_onhr"
 
 [node name="UIColor" type="VBoxContainer" parent="TabContainer/UI"]
-margin_top = 562.0
+margin_top = 594.0
 margin_right = 1280.0
-margin_bottom = 2194.0
+margin_bottom = 2226.0
 
 [node name="Group" type="MarginContainer" parent="TabContainer/UI/UIColor"]
 margin_right = 1280.0
@@ -4671,9 +4692,9 @@ align = 2
 valign = 1
 
 [node name="SEPARATOR" type="HSeparator" parent="TabContainer/UI"]
-margin_top = 2194.0
+margin_top = 2226.0
 margin_right = 1280.0
-margin_bottom = 2224.0
+margin_bottom = 2256.0
 rect_min_size = Vector2( 0, 10 )
 custom_constants/separation = 30
 custom_styles/separator = SubResource( 55 )
