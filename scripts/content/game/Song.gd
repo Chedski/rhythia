@@ -123,8 +123,8 @@ const db_builtin_difficulty_names = [
 
 func load_from_db_data(data:Dictionary={
 		"id":"INVALID_id_that_doesnt_exist",
-		"download":"http://chedski.test/ssp/mapdb/api/download/INVALID_id_that_doesnt_exist",
-		"audio":"http://chedski.test/ssp/mapdb/api/audio/INVALID_id_that_doesnt_exist",
+		"download":"http://nonexistent.invalid",
+		"audio":"http://nonexistent.invalid",
 #		"id":"ss_archive_waterflame_-_geometrical_dominator",
 #		"download":"http://chedski.test/ssp/mapdb/api/download/ss_archive_waterflame_-_geometrical_dominator",
 #		"audio":"http://chedski.test/ssp/mapdb/api/audio/ss_archive_waterflame_-_geometrical_dominator",
