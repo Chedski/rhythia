@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=2]
+[gd_scene load_steps=93 format=2]
 
 [ext_resource path="res://uitheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/font/Lato/Lato-Regular.ttf" type="DynamicFontData" id=2]
@@ -41,6 +41,7 @@
 [ext_resource path="res://scripts/ui/settings/fov.gd" type="Script" id=39]
 [ext_resource path="res://assets/font/Lato/Lato-Bold.ttf" type="DynamicFontData" id=40]
 [ext_resource path="res://scripts/ui/settings/Bloom.gd" type="Script" id=41]
+[ext_resource path="res://assets/notefx/miss/miss.png" type="Texture" id=42]
 [ext_resource path="res://scripts/ui/settings/NoteScale.gd" type="Script" id=44]
 [ext_resource path="res://scripts/ui/settings/ReplaceCustomFile.gd" type="Script" id=45]
 [ext_resource path="res://addons/native_dialogs/bin/native_dialog_open_file.gdns" type="Script" id=46]
@@ -2350,11 +2351,11 @@ custom_styles/separator = SubResource( 55 )
 [node name="Cursor" type="VBoxContainer" parent="TabContainer/World & Cursor"]
 margin_top = 276.0
 margin_right = 1280.0
-margin_bottom = 700.0
+margin_bottom = 736.0
 
 [node name="Group" type="MarginContainer" parent="TabContainer/World & Cursor/Cursor"]
 margin_right = 1280.0
-margin_bottom = 424.0
+margin_bottom = 460.0
 mouse_filter = 1
 custom_constants/margin_left = 66
 custom_constants/margin_bottom = 12
@@ -2362,7 +2363,7 @@ custom_constants/margin_bottom = 12
 [node name="H" type="GridContainer" parent="TabContainer/World & Cursor/Cursor/Group"]
 margin_left = 66.0
 margin_right = 1280.0
-margin_bottom = 412.0
+margin_bottom = 448.0
 
 [node name="CustomCursor" type="Control" parent="TabContainer/World & Cursor/Cursor/Group/H"]
 margin_right = 316.0
@@ -2437,10 +2438,85 @@ disabled = true
 icon = ExtResource( 4 )
 expand_icon = true
 
-[node name="CursorColorType" type="HBoxContainer" parent="TabContainer/World & Cursor/Cursor/Group/H"]
+[node name="CursorTrailImg" type="Control" parent="TabContainer/World & Cursor/Cursor/Group/H"]
 margin_top = 36.0
 margin_right = 316.0
 margin_bottom = 68.0
+rect_min_size = Vector2( 200, 32 )
+
+[node name="CursorTrailImg" type="Button" parent="TabContainer/World & Cursor/Cursor/Group/H/CursorTrailImg"]
+margin_right = 200.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 200, 32 )
+rect_pivot_offset = Vector2( -432, 104 )
+hint_tooltip = "ah, the cursor. arguably the most important part of this game."
+theme = ExtResource( 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "Click to replace"
+script = ExtResource( 45 )
+target = "trail"
+default_image = ExtResource( 42 )
+
+[node name="Label" type="Label" parent="TabContainer/World & Cursor/Cursor/Group/H/CursorTrailImg/CursorTrailImg"]
+margin_left = 289.0
+margin_right = 462.0
+margin_bottom = 32.0
+hint_tooltip = "ah, the cursor. arguably the most important part of this game."
+focus_mode = 2
+mouse_filter = 1
+theme = ExtResource( 1 )
+custom_colors/font_color = Color( 0.898039, 0.94902, 1, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Cursor Trail (optional)"
+valign = 1
+
+[node name="ImgPreview" type="TextureRect" parent="TabContainer/World & Cursor/Cursor/Group/H/CursorTrailImg/CursorTrailImg"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = 5.0
+margin_right = 37.0
+margin_bottom = 32.0
+texture = ExtResource( 42 )
+expand = true
+stretch_mode = 1
+
+[node name="Button" type="Button" parent="TabContainer/World & Cursor/Cursor/Group/H/CursorTrailImg/CursorTrailImg"]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = 42.0
+margin_right = 74.0
+margin_bottom = 32.0
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/World & Cursor/Cursor/Group/H/CursorTrailImg/CursorTrailImg/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 4
+
+[node name="Clear" type="Button" parent="TabContainer/World & Cursor/Cursor/Group/H/CursorTrailImg/CursorTrailImg"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = 42.0
+margin_right = 74.0
+margin_bottom = 32.0
+theme = ExtResource( 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+disabled = true
+icon = ExtResource( 4 )
+expand_icon = true
+
+[node name="CursorColorType" type="HBoxContainer" parent="TabContainer/World & Cursor/Cursor/Group/H"]
+margin_top = 72.0
+margin_right = 316.0
+margin_bottom = 104.0
 hint_tooltip = "how the cursor will be colored"
 
 [node name="Effect" type="MenuButton" parent="TabContainer/World & Cursor/Cursor/Group/H/CursorColorType"]
@@ -2475,9 +2551,9 @@ align = 2
 valign = 1
 
 [node name="cursor_color" type="HBoxContainer" parent="TabContainer/World & Cursor/Cursor/Group/H"]
-margin_top = 72.0
+margin_top = 108.0
 margin_right = 316.0
-margin_bottom = 104.0
+margin_bottom = 140.0
 hint_tooltip = "[def. #ffffff] color used for \"Single Color\""
 
 [node name="Color" type="ColorPickerButton" parent="TabContainer/World & Cursor/Cursor/Group/H/cursor_color"]
@@ -2509,9 +2585,9 @@ align = 2
 valign = 1
 
 [node name="CursorScale" type="HBoxContainer" parent="TabContainer/World & Cursor/Cursor/Group/H"]
-margin_top = 108.0
+margin_top = 144.0
 margin_right = 316.0
-margin_bottom = 140.0
+margin_bottom = 176.0
 hint_tooltip = "[def. 1] cursor size multiplier (doesn't affect hitboxes)"
 
 [node name="CursorScale" type="SpinBox" parent="TabContainer/World & Cursor/Cursor/Group/H/CursorScale"]
@@ -2540,9 +2616,9 @@ align = 2
 valign = 1
 
 [node name="CursorSpin" type="HBoxContainer" parent="TabContainer/World & Cursor/Cursor/Group/H"]
-margin_top = 144.0
+margin_top = 180.0
 margin_right = 316.0
-margin_bottom = 176.0
+margin_bottom = 212.0
 hint_tooltip = "[def. 0°] makes the cursor image rotate"
 
 [node name="CursorSpin" type="SpinBox" parent="TabContainer/World & Cursor/Cursor/Group/H/CursorSpin"]
@@ -2575,16 +2651,16 @@ align = 2
 valign = 1
 
 [node name="SEPARATOR7" type="HSeparator" parent="TabContainer/World & Cursor/Cursor/Group/H"]
-margin_top = 180.0
+margin_top = 216.0
 margin_right = 316.0
-margin_bottom = 190.0
+margin_bottom = 226.0
 rect_min_size = Vector2( 0, 10 )
 custom_styles/separator = SubResource( 55 )
 
 [node name="CursorTrail" type="CheckBox" parent="TabContainer/World & Cursor/Cursor/Group/H"]
-margin_top = 194.0
+margin_top = 230.0
 margin_right = 316.0
-margin_bottom = 222.0
+margin_bottom = 258.0
 rect_min_size = Vector2( 0, 28 )
 hint_tooltip = "many of you have asked so i shall deliver"
 theme = ExtResource( 1 )
@@ -2602,9 +2678,9 @@ script = ExtResource( 54 )
 target = "cursor_trail"
 
 [node name="SmartTrail" type="CheckBox" parent="TabContainer/World & Cursor/Cursor/Group/H"]
-margin_top = 226.0
+margin_top = 262.0
 margin_right = 316.0
-margin_bottom = 254.0
+margin_bottom = 290.0
 rect_min_size = Vector2( 0, 28 )
 hint_tooltip = "makes the trail smooth by using distance moved to spawn particles instead of having a constant number"
 theme = ExtResource( 1 )
@@ -2622,9 +2698,9 @@ script = ExtResource( 54 )
 target = "smart_trail"
 
 [node name="CursorTrailMode" type="HBoxContainer" parent="TabContainer/World & Cursor/Cursor/Group/H"]
-margin_top = 258.0
+margin_top = 294.0
 margin_right = 316.0
-margin_bottom = 290.0
+margin_bottom = 326.0
 hint_tooltip = "how the trail will fade out"
 
 [node name="Effect" type="MenuButton" parent="TabContainer/World & Cursor/Cursor/Group/H/CursorTrailMode"]
@@ -2657,9 +2733,9 @@ align = 2
 valign = 1
 
 [node name="TrailDetail" type="HBoxContainer" parent="TabContainer/World & Cursor/Cursor/Group/H"]
-margin_top = 294.0
+margin_top = 330.0
 margin_right = 316.0
-margin_bottom = 326.0
+margin_bottom = 362.0
 hint_tooltip = "[def. 10] number of particles in the cursor trail / (smart trail) number spawned per grid unit"
 
 [node name="TrailDetail" type="SpinBox" parent="TabContainer/World & Cursor/Cursor/Group/H/TrailDetail"]
@@ -2690,9 +2766,9 @@ align = 2
 valign = 1
 
 [node name="TrailTime" type="HBoxContainer" parent="TabContainer/World & Cursor/Cursor/Group/H"]
-margin_top = 330.0
+margin_top = 366.0
 margin_right = 316.0
-margin_bottom = 362.0
+margin_bottom = 398.0
 hint_tooltip = "[def. 0.15] how long the cursor trail lasts in seconds"
 
 [node name="TrailTime" type="SpinBox" parent="TabContainer/World & Cursor/Cursor/Group/H/TrailTime"]
@@ -2724,16 +2800,16 @@ align = 2
 valign = 1
 
 [node name="SEPARATOR3" type="HSeparator" parent="TabContainer/World & Cursor/Cursor/Group/H"]
-margin_top = 366.0
+margin_top = 402.0
 margin_right = 316.0
-margin_bottom = 376.0
+margin_bottom = 412.0
 rect_min_size = Vector2( 0, 10 )
 custom_styles/separator = SubResource( 55 )
 
 [node name="TouchIndicator" type="Control" parent="TabContainer/World & Cursor/Cursor/Group/H"]
-margin_top = 380.0
+margin_top = 416.0
 margin_right = 316.0
-margin_bottom = 412.0
+margin_bottom = 448.0
 rect_min_size = Vector2( 200, 32 )
 
 [node name="TouchIndicator" type="Button" parent="TabContainer/World & Cursor/Cursor/Group/H/TouchIndicator"]
@@ -2791,9 +2867,9 @@ icon = ExtResource( 4 )
 expand_icon = true
 
 [node name="SEPARATOR" type="HSeparator" parent="TabContainer/World & Cursor"]
-margin_top = 700.0
+margin_top = 736.0
 margin_right = 1280.0
-margin_bottom = 730.0
+margin_bottom = 766.0
 rect_min_size = Vector2( 0, 10 )
 custom_constants/separation = 30
 custom_styles/separator = SubResource( 55 )
