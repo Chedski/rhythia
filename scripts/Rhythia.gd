@@ -1261,6 +1261,8 @@ func load_saved_settings(saveFile:String = Globals.p("user://settings.json")):
 			hit_pitch_max = data.hit_pitch_max
 		if data.has("half_ghost"):
 			half_ghost = data.half_ghost
+		if data.has("show_full_combo_indicators"):
+			show_full_combo_indicators = data.show_full_combo_indicators
 
 		if data.has("language"):
 			language = data.language
@@ -1636,6 +1638,7 @@ func save_settings(saveFile:String = Globals.p("user://settings.json")):
 			ignore_controller_detection = ignore_controller_detection,
 			expand_hud_onhr = expand_hud_onhr,
 			last_search_incl_online = last_search_incl_online,
+			show_full_combo_indicators = show_full_combo_indicators,
 			
 			master_volume = ser_float(clamp(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master")),-80,1000000)),
 			music_volume = ser_float(clamp(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music")),-80,1000000)),
