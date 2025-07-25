@@ -260,7 +260,7 @@ func save_pbs():
 		else: file.store_32(floor(min(pb.length,pb.position)))
 		file.store_32(floor(pb.length))
 
-		file.store_16(pb.max_combo)		
+		file.store_16(pb.max_combo)
 		
 	file.close()
 
