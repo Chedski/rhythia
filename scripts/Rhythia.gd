@@ -121,6 +121,9 @@ var song_end_accuracy_str:String
 var song_end_time_str:String
 var song_end_length:float
 var song_end_combo:int
+var song_end_fail_time_str:String
+var song_end_fail_position:float
+var song_end_failed:bool
 # Replay data
 var replay:Replay
 var replay_path:String = ""
@@ -352,12 +355,21 @@ func _process(delta):
 	# Global hotkeys
 	if Input.is_action_just_pressed("fullscreen"):
 		OS.window_fullscreen = not OS.window_fullscreen
+	
+	if OS.has_feature("debug"):
+		if init_running and Input.is_action_pressed("debug_devmenu"):
+			menu_target = "res://scenes/devmenu.tscn"
+		elif Input.is_action_just_pressed("debug_devmenu"):
+			get_tree().change_scene("res://scenes/devmenu.tscn")
 
 # Debug
 var desync_alerts:bool = false
 var disable_desync:bool = false
 func _console(cmd:String,args:String):
 	match cmd:
+		"devmenu":
+			menu_target = "res://scenes/devmenu.tscn"
+			get_tree().change_scene("res://scenes/devmenu.tscn")
 		"queue":
 			var ids = args.split(" ",false)
 			if ids.size() == 0:
@@ -699,6 +711,11 @@ var timer_fg_done:Color = Color("#25bf00") #25bf00
 var timer_bg_done:Color = Color("#af008f00") #af008f00
 var timer_fg_canskip:Color = Color("#b3ffff") #760070
 var timer_bg_canskip:Color = Color("#b0638f8f") #b02b172a
+
+var energy_fg:Color = Color("#3aa515")
+var energy_bg:Color = Color("#af942121")
+var energy_failed:Color = Color(0.3,0.3,0.3,0.5)
+var energy_failed_flash:Color = Color(1.0,0.25,0.25)
 
 var miss_flash_color:Color = Color("#ff0000") #ff0000
 var pause_used_color:Color = Color("#ff66ff") #2600c2
@@ -1295,6 +1312,10 @@ func load_saved_settings(saveFile:String = Globals.p("user://settings.json")):
 		lcol(data,"timer_bg_done")
 		lcol(data,"timer_fg_canskip")
 		lcol(data,"timer_bg_canskip")
+		lcol(data,"energy_fg")
+		lcol(data,"energy_bg")
+		lcol(data,"energy_failed")
+		lcol(data,"energy_failed_flash")
 		lcol(data,"miss_flash_color")
 		lcol(data,"pause_used_color")
 		lcol(data,"miss_text_color")

@@ -3329,18 +3329,18 @@ target = "expand_hud_onhr"
 [node name="UIColor" type="VBoxContainer" parent="TabContainer/UI"]
 margin_top = 594.0
 margin_right = 1280.0
-margin_bottom = 2226.0
+margin_bottom = 2384.0
 
 [node name="Group" type="MarginContainer" parent="TabContainer/UI/UIColor"]
 margin_right = 1280.0
-margin_bottom = 1632.0
+margin_bottom = 1790.0
 mouse_filter = 1
 custom_constants/margin_left = 66
 
 [node name="H" type="GridContainer" parent="TabContainer/UI/UIColor/Group"]
 margin_left = 66.0
 margin_right = 1280.0
-margin_bottom = 1632.0
+margin_bottom = 1790.0
 
 [node name="Presets" type="Control" parent="TabContainer/UI/UIColor/Group/H"]
 margin_right = 500.0
@@ -4267,10 +4267,153 @@ margin_bottom = 1072.0
 rect_min_size = Vector2( 500, 10 )
 custom_styles/separator = SubResource( 55 )
 
-[node name="miss_text_color" type="HBoxContainer" parent="TabContainer/UI/UIColor/Group/H"]
+[node name="energy_fg" type="HBoxContainer" parent="TabContainer/UI/UIColor/Group/H"]
 margin_top = 1076.0
 margin_right = 500.0
 margin_bottom = 1108.0
+hint_tooltip = "[def. ##DEFAULT##] fill color of timer progress bar (when skipping is possible)"
+
+[node name="Color" type="ColorPickerButton" parent="TabContainer/UI/UIColor/Group/H/energy_fg"]
+margin_right = 100.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 100, 32 )
+rect_pivot_offset = Vector2( 286, -36 )
+hint_tooltip = "[def. ##DEFAULT##] fill color of energy bar"
+theme = ExtResource( 1 )
+custom_styles/hover = SubResource( 50 )
+custom_styles/pressed = SubResource( 51 )
+custom_styles/focus = SubResource( 52 )
+custom_styles/disabled = SubResource( 53 )
+custom_styles/normal = SubResource( 54 )
+script = ExtResource( 51 )
+target = "energy_fg"
+
+[node name="Label" type="Label" parent="TabContainer/UI/UIColor/Group/H/energy_fg"]
+margin_left = 104.0
+margin_top = 6.0
+margin_right = 212.0
+margin_bottom = 26.0
+focus_mode = 2
+theme = ExtResource( 1 )
+custom_colors/font_color = Color( 0.898039, 0.94902, 1, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Energy Bar - Fill"
+align = 2
+valign = 1
+
+[node name="energy_bg" type="HBoxContainer" parent="TabContainer/UI/UIColor/Group/H"]
+margin_top = 1112.0
+margin_right = 500.0
+margin_bottom = 1144.0
+hint_tooltip = "[def. ##DEFAULT##] fill color of timer progress bar (when skipping is possible)"
+
+[node name="Color" type="ColorPickerButton" parent="TabContainer/UI/UIColor/Group/H/energy_bg"]
+margin_right = 100.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 100, 32 )
+rect_pivot_offset = Vector2( 286, -36 )
+hint_tooltip = "[def. ##DEFAULT##] empty color of energy bar"
+theme = ExtResource( 1 )
+custom_styles/hover = SubResource( 50 )
+custom_styles/pressed = SubResource( 51 )
+custom_styles/focus = SubResource( 52 )
+custom_styles/disabled = SubResource( 53 )
+custom_styles/normal = SubResource( 54 )
+script = ExtResource( 51 )
+target = "energy_bg"
+
+[node name="Label" type="Label" parent="TabContainer/UI/UIColor/Group/H/energy_bg"]
+margin_left = 104.0
+margin_top = 6.0
+margin_right = 236.0
+margin_bottom = 26.0
+focus_mode = 2
+theme = ExtResource( 1 )
+custom_colors/font_color = Color( 0.898039, 0.94902, 1, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Energy Bar - Empty"
+align = 2
+valign = 1
+
+[node name="energy_failed" type="HBoxContainer" parent="TabContainer/UI/UIColor/Group/H"]
+margin_top = 1148.0
+margin_right = 500.0
+margin_bottom = 1180.0
+hint_tooltip = "[def. ##DEFAULT##] color of the energy bar after failing"
+
+[node name="Color" type="ColorPickerButton" parent="TabContainer/UI/UIColor/Group/H/energy_failed"]
+margin_right = 100.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 100, 32 )
+rect_pivot_offset = Vector2( 286, -36 )
+hint_tooltip = "[def. ##DEFAULT##] color of the energy bar after failing when playing with nofail"
+theme = ExtResource( 1 )
+custom_styles/hover = SubResource( 50 )
+custom_styles/pressed = SubResource( 51 )
+custom_styles/focus = SubResource( 52 )
+custom_styles/disabled = SubResource( 53 )
+custom_styles/normal = SubResource( 54 )
+script = ExtResource( 51 )
+target = "energy_failed"
+
+[node name="Label" type="Label" parent="TabContainer/UI/UIColor/Group/H/energy_failed"]
+margin_left = 104.0
+margin_top = 6.0
+margin_right = 233.0
+margin_bottom = 26.0
+focus_mode = 2
+theme = ExtResource( 1 )
+custom_colors/font_color = Color( 0.898039, 0.94902, 1, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Energy Bar - Failed"
+align = 2
+valign = 1
+
+[node name="energy_failed_flash" type="HBoxContainer" parent="TabContainer/UI/UIColor/Group/H"]
+margin_top = 1184.0
+margin_right = 500.0
+margin_bottom = 1216.0
+hint_tooltip = "[def. ##DEFAULT##] color of the energy bar after failing"
+
+[node name="Color" type="ColorPickerButton" parent="TabContainer/UI/UIColor/Group/H/energy_failed_flash"]
+margin_right = 100.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 100, 32 )
+rect_pivot_offset = Vector2( 286, -36 )
+hint_tooltip = "[def. ##DEFAULT##] color that the energy bar flashes when you fail with nofail on"
+theme = ExtResource( 1 )
+custom_styles/hover = SubResource( 50 )
+custom_styles/pressed = SubResource( 51 )
+custom_styles/focus = SubResource( 52 )
+custom_styles/disabled = SubResource( 53 )
+custom_styles/normal = SubResource( 54 )
+script = ExtResource( 51 )
+target = "energy_failed_flash"
+
+[node name="Label" type="Label" parent="TabContainer/UI/UIColor/Group/H/energy_failed_flash"]
+margin_left = 104.0
+margin_top = 6.0
+margin_right = 283.0
+margin_bottom = 26.0
+focus_mode = 2
+theme = ExtResource( 1 )
+custom_colors/font_color = Color( 0.898039, 0.94902, 1, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Energy Bar - Failed (Flash)"
+align = 2
+valign = 1
+
+[node name="SEPARATOR15" type="HSeparator" parent="TabContainer/UI/UIColor/Group/H"]
+margin_top = 1220.0
+margin_right = 500.0
+margin_bottom = 1230.0
+rect_min_size = Vector2( 500, 10 )
+custom_styles/separator = SubResource( 55 )
+
+[node name="miss_text_color" type="HBoxContainer" parent="TabContainer/UI/UIColor/Group/H"]
+margin_top = 1234.0
+margin_right = 500.0
+margin_bottom = 1266.0
 hint_tooltip = "[def. ##DEFAULT##] text color of the miss counter"
 
 [node name="Color" type="ColorPickerButton" parent="TabContainer/UI/UIColor/Group/H/miss_text_color"]
@@ -4302,9 +4445,9 @@ align = 2
 valign = 1
 
 [node name="miss_flash_color" type="HBoxContainer" parent="TabContainer/UI/UIColor/Group/H"]
-margin_top = 1112.0
+margin_top = 1270.0
 margin_right = 500.0
-margin_bottom = 1144.0
+margin_bottom = 1302.0
 hint_tooltip = "[def. ##DEFAULT##] miss counter text briefly flashes this color when you get a miss"
 
 [node name="Color" type="ColorPickerButton" parent="TabContainer/UI/UIColor/Group/H/miss_flash_color"]
@@ -4336,16 +4479,16 @@ align = 2
 valign = 1
 
 [node name="SEPARATOR11" type="HSeparator" parent="TabContainer/UI/UIColor/Group/H"]
-margin_top = 1148.0
+margin_top = 1306.0
 margin_right = 500.0
-margin_bottom = 1158.0
+margin_bottom = 1316.0
 rect_min_size = Vector2( 500, 10 )
 custom_styles/separator = SubResource( 55 )
 
 [node name="pause_text_color" type="HBoxContainer" parent="TabContainer/UI/UIColor/Group/H"]
-margin_top = 1162.0
+margin_top = 1320.0
 margin_right = 500.0
-margin_bottom = 1194.0
+margin_bottom = 1352.0
 hint_tooltip = "[def. ##DEFAULT##] color of the pause counter (with no pauses)"
 
 [node name="Color" type="ColorPickerButton" parent="TabContainer/UI/UIColor/Group/H/pause_text_color"]
@@ -4377,9 +4520,9 @@ align = 2
 valign = 1
 
 [node name="pause_used_color" type="HBoxContainer" parent="TabContainer/UI/UIColor/Group/H"]
-margin_top = 1198.0
+margin_top = 1356.0
 margin_right = 500.0
-margin_bottom = 1230.0
+margin_bottom = 1388.0
 hint_tooltip = "[def. ##DEFAULT##] color of the pause counter (with at least 1 pause)"
 
 [node name="Color" type="ColorPickerButton" parent="TabContainer/UI/UIColor/Group/H/pause_used_color"]
@@ -4411,16 +4554,16 @@ align = 2
 valign = 1
 
 [node name="SEPARATOR12" type="HSeparator" parent="TabContainer/UI/UIColor/Group/H"]
-margin_top = 1234.0
+margin_top = 1392.0
 margin_right = 500.0
-margin_bottom = 1244.0
+margin_bottom = 1402.0
 rect_min_size = Vector2( 500, 10 )
 custom_styles/separator = SubResource( 55 )
 
 [node name="grade_ss_saturation" type="HBoxContainer" parent="TabContainer/UI/UIColor/Group/H"]
-margin_top = 1248.0
+margin_top = 1406.0
 margin_right = 500.0
-margin_bottom = 1280.0
+margin_bottom = 1438.0
 hint_tooltip = "[def. ##DEFAULT##] hsv saturation of rainbow effect on grade SS"
 
 [node name="SpinBox" type="SpinBox" parent="TabContainer/UI/UIColor/Group/H/grade_ss_saturation"]
@@ -4451,9 +4594,9 @@ align = 2
 valign = 1
 
 [node name="grade_ss_value" type="HBoxContainer" parent="TabContainer/UI/UIColor/Group/H"]
-margin_top = 1284.0
+margin_top = 1442.0
 margin_right = 500.0
-margin_bottom = 1316.0
+margin_bottom = 1474.0
 hint_tooltip = "[def. ##DEFAULT##] hsv value of rainbow effect on grade SS"
 
 [node name="SpinBox" type="SpinBox" parent="TabContainer/UI/UIColor/Group/H/grade_ss_value"]
@@ -4484,9 +4627,9 @@ align = 2
 valign = 1
 
 [node name="grade_ss_shine" type="HBoxContainer" parent="TabContainer/UI/UIColor/Group/H"]
-margin_top = 1320.0
+margin_top = 1478.0
 margin_right = 500.0
-margin_bottom = 1352.0
+margin_bottom = 1510.0
 hint_tooltip = "[def. ##DEFAULT##] level of shine shader when grade is SS"
 
 [node name="SpinBox" type="SpinBox" parent="TabContainer/UI/UIColor/Group/H/grade_ss_shine"]
@@ -4517,16 +4660,16 @@ align = 2
 valign = 1
 
 [node name="SEPARATOR13" type="HSeparator" parent="TabContainer/UI/UIColor/Group/H"]
-margin_top = 1356.0
+margin_top = 1514.0
 margin_right = 500.0
-margin_bottom = 1366.0
+margin_bottom = 1524.0
 rect_min_size = Vector2( 500, 10 )
 custom_styles/separator = SubResource( 55 )
 
 [node name="grade_s_color" type="HBoxContainer" parent="TabContainer/UI/UIColor/Group/H"]
-margin_top = 1370.0
+margin_top = 1528.0
 margin_right = 500.0
-margin_bottom = 1402.0
+margin_bottom = 1560.0
 hint_tooltip = "[def. ##DEFAULT##] color of text when grade is S"
 
 [node name="Color" type="ColorPickerButton" parent="TabContainer/UI/UIColor/Group/H/grade_s_color"]
@@ -4558,9 +4701,9 @@ align = 2
 valign = 1
 
 [node name="grade_s_shine" type="HBoxContainer" parent="TabContainer/UI/UIColor/Group/H"]
-margin_top = 1406.0
+margin_top = 1564.0
 margin_right = 500.0
-margin_bottom = 1438.0
+margin_bottom = 1596.0
 hint_tooltip = "[def. ##DEFAULT##] level of shine shader when grade is S"
 
 [node name="SpinBox" type="SpinBox" parent="TabContainer/UI/UIColor/Group/H/grade_s_shine"]
@@ -4591,16 +4734,16 @@ align = 2
 valign = 1
 
 [node name="SEPARATOR14" type="HSeparator" parent="TabContainer/UI/UIColor/Group/H"]
-margin_top = 1442.0
+margin_top = 1600.0
 margin_right = 500.0
-margin_bottom = 1452.0
+margin_bottom = 1610.0
 rect_min_size = Vector2( 500, 10 )
 custom_styles/separator = SubResource( 55 )
 
 [node name="grade_a_color" type="HBoxContainer" parent="TabContainer/UI/UIColor/Group/H"]
-margin_top = 1456.0
+margin_top = 1614.0
 margin_right = 500.0
-margin_bottom = 1488.0
+margin_bottom = 1646.0
 hint_tooltip = "[def. ##DEFAULT##] color of text when grade is A"
 
 [node name="Color" type="ColorPickerButton" parent="TabContainer/UI/UIColor/Group/H/grade_a_color"]
@@ -4632,9 +4775,9 @@ align = 2
 valign = 1
 
 [node name="grade_b_color" type="HBoxContainer" parent="TabContainer/UI/UIColor/Group/H"]
-margin_top = 1492.0
+margin_top = 1650.0
 margin_right = 500.0
-margin_bottom = 1524.0
+margin_bottom = 1682.0
 hint_tooltip = "[def. ##DEFAULT##] color of text when grade is B"
 
 [node name="Color" type="ColorPickerButton" parent="TabContainer/UI/UIColor/Group/H/grade_b_color"]
@@ -4666,9 +4809,9 @@ align = 2
 valign = 1
 
 [node name="grade_c_color" type="HBoxContainer" parent="TabContainer/UI/UIColor/Group/H"]
-margin_top = 1528.0
+margin_top = 1686.0
 margin_right = 500.0
-margin_bottom = 1560.0
+margin_bottom = 1718.0
 hint_tooltip = "[def. ##DEFAULT##] color of text when grade is C"
 
 [node name="Color" type="ColorPickerButton" parent="TabContainer/UI/UIColor/Group/H/grade_c_color"]
@@ -4700,9 +4843,9 @@ align = 2
 valign = 1
 
 [node name="grade_d_color" type="HBoxContainer" parent="TabContainer/UI/UIColor/Group/H"]
-margin_top = 1564.0
+margin_top = 1722.0
 margin_right = 500.0
-margin_bottom = 1596.0
+margin_bottom = 1754.0
 hint_tooltip = "[def. ##DEFAULT##] color of text when grade is D"
 
 [node name="Color" type="ColorPickerButton" parent="TabContainer/UI/UIColor/Group/H/grade_d_color"]
@@ -4734,9 +4877,9 @@ align = 2
 valign = 1
 
 [node name="grade_f_color" type="HBoxContainer" parent="TabContainer/UI/UIColor/Group/H"]
-margin_top = 1600.0
+margin_top = 1758.0
 margin_right = 500.0
-margin_bottom = 1632.0
+margin_bottom = 1790.0
 hint_tooltip = "[def. ##DEFAULT##] color of text when grade is F"
 
 [node name="Color" type="ColorPickerButton" parent="TabContainer/UI/UIColor/Group/H/grade_f_color"]
@@ -4768,9 +4911,9 @@ align = 2
 valign = 1
 
 [node name="SEPARATOR" type="HSeparator" parent="TabContainer/UI"]
-margin_top = 2226.0
+margin_top = 2384.0
 margin_right = 1280.0
-margin_bottom = 2256.0
+margin_bottom = 2414.0
 rect_min_size = Vector2( 0, 10 )
 custom_constants/separation = 30
 custom_styles/separator = SubResource( 55 )

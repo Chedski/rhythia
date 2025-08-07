@@ -69,6 +69,17 @@ func end(end_type:int):
 		Rhythia.replay.store_sig($Spawn.rms,Globals.RS_GIVEUP)
 	if end_type != Globals.END_PASS:
 		Rhythia.fail_asp.play()
+		if !Rhythia.song_end_failed:
+			Rhythia.song_end_failed = true
+			var fail_ms = clamp($Spawn.ms,0,last_ms)
+			
+			var s = fail_ms / 1000.0
+			var m = floor(s / 60.0)
+			var rs = fmod(s, 60.0)
+			
+			Rhythia.song_end_fail_ms = fail_ms
+			Rhythia.song_end_time_str = "%d:%02d" % [m,rs]
+		
 	get_tree().paused = true
 	if total_notes == 0: total_notes = 1
 	update_hud()
@@ -273,8 +284,17 @@ func miss(col):
 			emit_signal("failed")
 			if Rhythia.mod_nofail:
 				Rhythia.fail_asp.play()
+				var fail_ms = clamp($Spawn.ms,0,last_ms)
+				
+				var s = fail_ms / 1000.0
+				var m = floor(s / 60.0)
+				var rs = fmod(s, 60.0)
+				
+				Rhythia.song_end_fail_ms = fail_ms
+				Rhythia.song_end_time_str = "%d:%02d" % [m,rs]
 			else:
 				end(Globals.END_FAIL)
+			Rhythia.song_end_failed = true
 
 
 func _ready():
