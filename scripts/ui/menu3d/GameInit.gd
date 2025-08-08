@@ -110,6 +110,9 @@ func _process(delta):
 #		total += n.opacity
 	
 	if !leaving:
+		
+		if Rhythia.init_running and OS.has_feature("debug") and Input.is_action_pressed("debug_devmenu"):
+			target = "res://scenes/devmenu.tscn"
 		if RQueue.is_ready(target):
 			result = RQueue.get_resource(target)
 			leaving = true

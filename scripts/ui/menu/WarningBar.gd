@@ -1,5 +1,7 @@
 extends ColorRect
 
+export var is_devmenu = false
+
 var entry:float = 0
 var state:bool = false
 var scroll:float = 0
@@ -161,9 +163,16 @@ func _process(delta):
 				switch = 0.35
 				state = false
 	
+	var centerdist = width * abs(
+		fmod(scroll + ($L.rect_size.x/2.0/width), 1.0) - 0.5
+	)
+	
+	var centerdist_mod = (6.0 * pow(centerdist/((width-$L.rect_size.x)/1.7), 2.0)) # keep text in the middle for longer
 	
 	scroll = scroll + (delta * (20.0/1200.0)) * (
-		1.5 + (3.0 * float(Input.is_key_pressed(KEY_CONTROL))))
+		1.5 + (3.0 * float(Input.is_key_pressed(KEY_CONTROL)))
+		+ centerdist_mod
+	)
 	if scroll >= 1.0: scroll -= 1.0
 	
 	$L.rect_position = Vector2(
@@ -175,27 +184,30 @@ func _process(delta):
 		0
 	)
 	
-	if state && entry != 1:
-		entry = min(entry + (delta/0.8), 1.0)
-		modulate = Color(1.0, 1.0, 1.0, entry)
-		margin_top = Dance.InOutSine(entry) * -30
-		margin_bottom = (1.0 - Dance.InOutSine(entry)) * 30
-		get_parent().get_node("VersionNumber").margin_top = -45 - (Dance.InOutSine(entry)*30)
-		get_parent().get_node("VersionNumber").margin_bottom = -15 - (Dance.InOutSine(entry)*30)
-		get_parent().get_node("VersionNumberB").margin_top = -45 - (Dance.InOutSine(entry)*30)
-		get_parent().get_node("VersionNumberB").margin_bottom = -15 - (Dance.InOutSine(entry)*30)
-		
-	elif !state && entry != 0:
-		entry = max(entry - (delta/0.8), 0.0)
-		modulate = Color(1.0, 1.0, 1.0, entry)
-		margin_top = Dance.InOutSine(entry) * -30
-		margin_bottom = (1.0 - Dance.InOutSine(entry)) * 30
-		get_parent().get_node("VersionNumber").margin_top = -45 - (Dance.InOutSine(entry)*30)
-		get_parent().get_node("VersionNumber").margin_bottom = -15 - (Dance.InOutSine(entry)*30)
-		get_parent().get_node("VersionNumberB").margin_top = -45 - (Dance.InOutSine(entry)*30)
-		get_parent().get_node("VersionNumberB").margin_bottom = -15 - (Dance.InOutSine(entry)*30)
-		
-	visible = (entry != 0)
+	if is_devmenu:
+		visible = state
+	else:
+		if state && entry != 1:
+			entry = min(entry + (delta/0.8), 1.0)
+			modulate = Color(1.0, 1.0, 1.0, entry)
+			margin_top = Dance.InOutSine(entry) * -30
+			margin_bottom = (1.0 - Dance.InOutSine(entry)) * 30
+			get_parent().get_node("VersionNumber").margin_top = -45 - (Dance.InOutSine(entry)*30)
+			get_parent().get_node("VersionNumber").margin_bottom = -15 - (Dance.InOutSine(entry)*30)
+			get_parent().get_node("VersionNumberB").margin_top = -45 - (Dance.InOutSine(entry)*30)
+			get_parent().get_node("VersionNumberB").margin_bottom = -15 - (Dance.InOutSine(entry)*30)
+			
+		elif !state && entry != 0:
+			entry = max(entry - (delta/0.8), 0.0)
+			modulate = Color(1.0, 1.0, 1.0, entry)
+			margin_top = Dance.InOutSine(entry) * -30
+			margin_bottom = (1.0 - Dance.InOutSine(entry)) * 30
+			get_parent().get_node("VersionNumber").margin_top = -45 - (Dance.InOutSine(entry)*30)
+			get_parent().get_node("VersionNumber").margin_bottom = -15 - (Dance.InOutSine(entry)*30)
+			get_parent().get_node("VersionNumberB").margin_top = -45 - (Dance.InOutSine(entry)*30)
+			get_parent().get_node("VersionNumberB").margin_bottom = -15 - (Dance.InOutSine(entry)*30)
+			
+		visible = (entry != 0)
 
 func _ready():
 	current_warning = check_warnings()

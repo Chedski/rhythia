@@ -70,6 +70,11 @@ var timer_bg_done:Color = Rhythia.timer_bg_done
 var timer_fg_canskip:Color = Rhythia.timer_fg_canskip
 var timer_bg_canskip:Color = Rhythia.timer_bg_canskip
 
+var energy_fg:Color = Rhythia.energy_fg
+var energy_bg:Color = Rhythia.energy_bg
+var energy_failed:Color = Rhythia.energy_failed
+var energy_failed_flash:Color = Rhythia.energy_failed_flash
+
 var miss_flash_color:Color = Rhythia.miss_flash_color
 var pause_used_color:Color = Rhythia.pause_used_color
 
@@ -378,7 +383,7 @@ func _process(delta:float):
 		fail_flash = max(fail_flash - (delta / 0.5), 0.0)
 		var fail_flash_curved = ease(fail_flash, 4)
 		energybar.get("custom_styles/fg").bg_color = Color(0.0,0.0,0.0,0.0)
-		energybar.get("custom_styles/bg").bg_color = lerp(Color(0.3,0.3,0.3,0.5), Color(1.0,0.25,0.25), fail_flash_curved)
+		energybar.get("custom_styles/bg").bg_color = lerp(energy_failed, energy_failed_flash, fail_flash_curved)
 		energybar.get_node("Failed").visible = true
 		energybar.get_node("Failed").modulate = lerp(Color(1.0,0.4,0.4,0.8), Color(1.0,0.0,0.0), fail_flash_curved)
 		if Rhythia.attach_hp_to_grid: # unfortunately this gets cut off when using detached HP
@@ -488,11 +493,15 @@ func _ready():
 		comboring.empty_color = Color(ce,ce,ce,combo_empty_color.a)
 		accbar.get("custom_styles/fg").bg_color = Color(af,af,af,acc_fill_color.a)
 		accbar.get("custom_styles/bg").bg_color = Color(ae,ae,ae,acc_empty_color.a)
+		
 	else:
 		comboring.fill_color = combo_fill_color
 		comboring.empty_color = combo_empty_color
 		accbar.get("custom_styles/fg").bg_color = acc_fill_color
 		accbar.get("custom_styles/bg").bg_color = acc_empty_color
+		energybar.get("custom_styles/fg").bg_color = energy_fg
+		energybar.get("custom_styles/bg").bg_color = energy_bg
+		
 	
 	
 	

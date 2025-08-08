@@ -77,7 +77,7 @@ func end(end_type:int):
 			var m = floor(s / 60.0)
 			var rs = fmod(s, 60.0)
 			
-			Rhythia.song_end_fail_ms = fail_ms
+			Rhythia.song_end_fail_position = fail_ms
 			Rhythia.song_end_time_str = "%d:%02d" % [m,rs]
 		
 	get_tree().paused = true
@@ -290,7 +290,7 @@ func miss(col):
 				var m = floor(s / 60.0)
 				var rs = fmod(s, 60.0)
 				
-				Rhythia.song_end_fail_ms = fail_ms
+				Rhythia.song_end_fail_position = fail_ms
 				Rhythia.song_end_time_str = "%d:%02d" % [m,rs]
 			else:
 				end(Globals.END_FAIL)

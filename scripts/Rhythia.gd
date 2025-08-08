@@ -1965,6 +1965,13 @@ func register_effects():
 	registry_effect.add_item(NoteEffect.new(
 		"ssp_miss_w", "Miss* (no color)", "res://assets/notefx/miss/miss.tscn", "Chedski"
 	))
+	
+	registry_effect.add_item(NoteEffect.new(
+		"ssp_explosion", "Explosion", "res://assets/notefx/explosion/explosion.tscn", "Chedski"
+	))
+	registry_effect.add_item(NoteEffect.new(
+		"ssp_explosion_t", "Explosion (transparent)", "res://assets/notefx/explosion/explosion.tscn", "Chedski"
+	))
 
 
 
