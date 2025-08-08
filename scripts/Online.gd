@@ -330,7 +330,6 @@ func check_latest_version():
 	if (
 		!(OS.has_feature("Windows") or OS.has_feature("X11"))
 		or !ProjectSettings.get_setting("application/networking/enabled")
-		or ProjectSettings.get_setting("application/config/version").begins_with("dev-")
 		):
 		emit_signal("latest_version",ProjectSettings.get_setting("application/config/version"))
 		return
